@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>22 Apartments — IDH, Colombo</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF8F4;
+    --dark: #1A1A18;
+    --charcoal: #2D2D2B;
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --sage: #7A8C6E;
+    --muted: #6B6B65;
+    --border: rgba(26,26,24,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(245,240,232,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 3px;
+    color: var(--dark);
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .nav-logo span {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold); display: inline-block;
+  }
+
+  .nav-links { display: flex; gap: 36px; align-items: center; }
+  .nav-links a {
+    text-decoration: none; color: var(--charcoal);
+    font-size: 14px; font-weight: 400; letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--dark); color: var(--cream) !important;
+    padding: 10px 24px; border-radius: 50px;
+    font-weight: 500 !important; transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--dark) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 120px 60px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 40px; height: 1px; background: var(--gold);
+  }
+
+  .hero-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 9vw, 120px);
+    line-height: 0.92;
+    letter-spacing: 2px;
+    color: var(--dark);
+    margin-bottom: 30px;
+  }
+
+  .hero-headline em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.8em;
+  }
+
+  .hero-sub {
+    font-size: 16px; line-height: 1.7;
+    color: var(--muted); max-width: 380px;
+    margin-bottom: 44px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+
+  .btn-primary {
+    background: var(--dark); color: var(--cream);
+    padding: 16px 36px; border-radius: 50px;
+    font-size: 15px; font-weight: 500;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all 0.25s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold); color: var(--dark); transform: translateY(-2px); }
+
+  .btn-ghost {
+    color: var(--dark); font-size: 15px; font-weight: 400;
+    text-decoration: none; display: flex; align-items: center; gap: 8px;
+    transition: gap 0.2s;
+  }
+  .btn-ghost:hover { gap: 14px; }
+  .btn-ghost::after { content: '→'; font-size: 18px; }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 60px;
+    padding-top: 40px; border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px; letter-spacing: 1px; color: var(--dark);
+    line-height: 1;
+  }
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  /* Hero Visual Side */
+  .hero-visual { position: relative; }
+
+  .hero-card-main {
+    background: var(--dark);
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    position: relative;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+
+  .hero-building-img {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.02);
+  }
+
+  .hero-building-svg {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .hero-card-info {
+    position: relative; z-index: 2;
+    padding: 28px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+  }
+
+  .apt-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(201,168,76,0.2); border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold-light); padding: 6px 14px; border-radius: 50px;
+    font-size: 12px; margin-bottom: 14px;
+  }
+  .apt-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+  .apt-name { color: white; font-size: 22px; font-weight: 600; margin-bottom: 4px; }
+  .apt-price { color: var(--gold-light); font-size: 14px; }
+
+  .floating-tags {
+    position: absolute; top: 24px; right: -20px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .ftag {
+    background: var(--warm-white); border: 1px solid var(--border);
+    padding: 10px 16px; border-radius: 50px;
+    font-size: 13px; font-weight: 500; color: var(--dark);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    white-space: nowrap;
+  }
+
+  .floating-stat {
+    position: absolute; bottom: 100px; left: -30px;
+    background: var(--gold); color: var(--dark);
+    padding: 16px 20px; border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(201,168,76,0.3);
+  }
+  .fs-num { font-family: 'Bebas Neue', sans-serif; font-size: 32px; line-height: 1; }
+  .fs-label { font-size: 11px; font-weight: 500; opacity: 0.8; margin-top: 2px; }
+
+  /* SEARCH BAR */
+  .search-section {
+    padding: 0 60px 80px;
+  }
+
+  .search-bar {
+    background: white;
+    border-radius: 20px;
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 20px;
+    align-items: center;
+    box-shadow: 0 8px 40px rgba(26,26,24,0.1);
+    border: 1px solid var(--border);
+  }
+
+  .search-field { display: flex; flex-direction: column; gap: 4px; }
+  .sf-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .sf-input {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; color: var(--dark); font-weight: 500;
+    border: none; background: transparent; outline: none;
+    padding: 0; cursor: pointer;
+  }
+  .sf-divider { width: 1px; height: 40px; background: var(--border); }
+
+  .search-btn {
+    background: var(--gold); color: var(--dark);
+    border: none; border-radius: 14px;
+    padding: 16px 28px; font-size: 15px; font-weight: 600;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s; white-space: nowrap;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .search-btn:hover { background: var(--dark); color: var(--cream); transform: translateY(-1px); }
+
+  /* APARTMENTS SECTION */
+  .apts-section { padding: 80px 60px; }
+
+  .section-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 50px;
+  }
+
+  .section-eyebrow {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 5vw, 64px);
+    letter-spacing: 1px; line-height: 0.95;
+  }
+
+  .section-title em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic; color: var(--gold);
+  }
+
+  .filter-tabs { display: flex; gap: 8px; }
+  .ftab {
+    padding: 10px 20px; border-radius: 50px;
+    font-size: 13px; font-weight: 500; cursor: pointer;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--muted); font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+  .ftab:hover, .ftab.active { background: var(--dark); color: var(--cream); border-color: var(--dark); }
+
+  /* GRID */
+  .apt-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .apt-card {
+    background: white; border-radius: 20px;
+    overflow: hidden; border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  .apt-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(26,26,24,0.12); }
+
+  .apt-card.featured {
+    grid-column: span 2;
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+
+  .apt-img {
+    aspect-ratio: 4/3;
+    position: relative; overflow: hidden;
+  }
+
+  .apt-card.featured .apt-img { aspect-ratio: auto; }
+
+  .apt-img-bg {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 60px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.4s;
+  }
+  .apt-card:hover .apt-img-bg { transform: scale(1.05); }
+
+  .apt-img-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,26,24,0.3) 0%, transparent 60%);
+  }
+
+  .apt-unit-badge {
+    position: absolute; top: 14px; left: 14px;
+    background: rgba(255,255,255,0.95); color: var(--dark);
+    padding: 6px 12px; border-radius: 50px;
+    font-size: 12px; font-weight: 600;
+  }
+
+  .apt-avail {
+    position: absolute; top: 14px; right: 14px;
+    padding: 6px 12px; border-radius: 50px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.5px;
+  }
+  .avail-yes { background: #E8F5E0; color: #3B6D11; }
+  .avail-soon { background: #FFF3CD; color: #85500B; }
+
+  .apt-body { padding: 20px; }
+  .apt-card.featured .apt-body {
+    padding: 32px; display: flex; flex-direction: column; justify-content: center;
+  }
+
+  .apt-floor { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .apt-title { font-size: 18px; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
+  .apt-card.featured .apt-title { font-size: 26px; margin-bottom: 10px; }
+
+  .apt-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; display: none; }
+  .apt-card.featured .apt-desc { display: block; }
+
+  .apt-specs { display: flex; gap: 16px; margin-bottom: 16px; }
+  .spec { display: flex; align-items: center; gap: 5px; font-size: 13px; color: var(--muted); }
+  .spec-icon { font-size: 14px; }
+
+  .apt-footer { display: flex; align-items: center; justify-content: space-between; }
+  .apt-price-tag { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 1px; color: var(--dark); }
+  .apt-price-tag small { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 400; color: var(--muted); letter-spacing: 0; }
+
+  .apt-btn {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--dark); color: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; border: none; cursor: pointer;
+    transition: all 0.2s;
+  }
+  .apt-btn:hover { background: var(--gold); color: var(--dark); }
+
+  .apt-card.featured .apt-btn {
+    width: auto; padding: 12px 24px; border-radius: 50px;
+    font-size: 14px; font-weight: 500;
+    display: flex; gap: 8px; align-items: center;
+  }
+
+  /* AMENITIES */
+  .amenities-section {
+    padding: 80px 60px;
+    background: var(--dark);
+    color: var(--cream);
+    position: relative; overflow: hidden;
+  }
+
+  .amenities-section::before {
+    content: '22 APARTMENTS';
+    position: absolute; top: -20px; left: -10px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 200px; letter-spacing: 10px;
+    color: rgba(255,255,255,0.03);
+    white-space: nowrap; pointer-events: none;
+  }
+
+  .amenities-section .section-title { color: var(--cream); }
+  .amenities-section .section-eyebrow { color: var(--gold); }
+
+  .amenities-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 24px; margin-top: 50px;
+  }
+
+  .amenity-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 28px;
+    transition: all 0.3s;
+  }
+  .amenity-card:hover {
+    background: rgba(201,168,76,0.1);
+    border-color: rgba(201,168,76,0.3);
+    transform: translateY(-4px);
+  }
+
+  .amenity-icon { font-size: 36px; margin-bottom: 16px; }
+  .amenity-title { font-size: 16px; font-weight: 600; color: var(--cream); margin-bottom: 8px; }
+  .amenity-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+  /* FLOOR PLANS */
+  .plans-section { padding: 80px 60px; background: var(--warm-white); }
+
+  .plans-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px; margin-top: 50px;
+  }
+
+  .plan-card {
+    background: white; border-radius: 20px;
+    padding: 28px; border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .plan-card:hover { border-color: var(--gold); box-shadow: 0 8px 30px rgba(201,168,76,0.15); }
+  .plan-card.highlight { background: var(--dark); color: var(--cream); border-color: var(--dark); }
+
+  .plan-type {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 10px;
+  }
+  .plan-name { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .plan-card.highlight .plan-name { color: var(--cream); }
+
+  .plan-sqft { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+  .plan-card.highlight .plan-sqft { color: rgba(255,255,255,0.5); }
+
+  .plan-features { list-style: none; margin-bottom: 24px; }
+  .plan-features li {
+    font-size: 14px; padding: 8px 0; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--charcoal);
+  }
+  .plan-card.highlight .plan-features li { color: var(--cream); border-color: rgba(255,255,255,0.1); }
+  .plan-features li:last-child { border: none; }
+  .plan-features li span { font-weight: 600; }
+
+  .plan-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px; letter-spacing: 1px; color: var(--dark);
+    margin-bottom: 16px;
+  }
+  .plan-card.highlight .plan-price { color: var(--gold); }
+  .plan-price small { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0; }
+
+  .plan-btn {
+    width: 100%; padding: 14px; border-radius: 12px;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; border: none;
+    transition: all 0.2s;
+  }
+  .plan-btn-outline {
+    background: transparent; color: var(--dark);
+    border: 1.5px solid var(--border);
+  }
+  .plan-btn-outline:hover { border-color: var(--dark); background: var(--dark); color: var(--cream); }
+  .plan-btn-solid { background: var(--gold); color: var(--dark); }
+  .plan-btn-solid:hover { background: var(--cream); }
+
+  /* CTA SECTION */
+  .cta-section {
+    padding: 80px 60px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center;
+    background: var(--cream);
+  }
+
+  .cta-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold); padding: 8px 18px; border-radius: 50px;
+    font-size: 12px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 24px;
+  }
+
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 5vw, 60px); letter-spacing: 1px;
+    line-height: 0.95; margin-bottom: 24px;
+  }
+  .cta-title em { font-family: 'Playfair Display', serif; font-style: italic; color: var(--gold); }
+
+  .cta-text { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 36px; }
+
+  .contact-form { background: white; border-radius: 24px; padding: 40px; border: 1px solid var(--border); }
+  .form-title { font-size: 20px; font-weight: 700; margin-bottom: 24px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; }
+  .form-group input, .form-group select {
+    font-family: 'DM Sans', sans-serif;
+    padding: 12px 16px; border-radius: 12px;
+    border: 1.5px solid var(--border); font-size: 14px;
+    background: var(--warm-white); color: var(--dark);
+    outline: none; transition: border-color 0.2s;
+    appearance: none;
+  }
+  .form-group input:focus, .form-group select:focus { border-color: var(--gold); }
+
+  .form-submit {
+    width: 100%; padding: 16px; background: var(--dark); color: var(--cream);
+    border: none; border-radius: 12px; font-size: 15px; font-weight: 600;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s; margin-top: 8px;
+  }
+  .form-submit:hover { background: var(--gold); color: var(--dark); }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal); color: rgba(255,255,255,0.6);
+    padding: 50px 60px 30px;
+  }
+
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px; margin-bottom: 40px;
+    padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px; letter-spacing: 3px; color: white;
+    margin-bottom: 14px;
+  }
+
+  .footer-about { font-size: 14px; line-height: 1.7; max-width: 260px; margin-bottom: 24px; }
+
+  .footer-heading { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: white; margin-bottom: 16px; }
+
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left > * { animation: fadeUp 0.7s ease both; }
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-left > *:nth-child(5) { animation-delay: 0.5s; }
+
+  /* BG COLOR SCHEMES FOR APT CARDS */
+  .photo-hero { background-image: linear-gradient(rgba(26,26,24,0.18), rgba(26,26,24,0.3)), url("assets/WhatsApp Image 2026-04-30 at 7.26.17 AM.jpeg"); }
+  .photo-801 { background-image: linear-gradient(rgba(26,26,24,0.1), rgba(26,26,24,0.25)), url("assets/WhatsApp Image 2026-04-30 at 7.25.12 AM.jpeg"); }
+  .photo-701 { background-image: linear-gradient(rgba(26,26,24,0.12), rgba(26,26,24,0.28)), url("assets/WhatsApp Image 2026-04-30 at 7.26.16 AM.jpeg"); }
+  .photo-601 { background-image: linear-gradient(rgba(26,26,24,0.12), rgba(26,26,24,0.28)), url("assets/WhatsApp Image 2026-04-30 at 7.25.11 AM.jpeg"); }
+  .photo-501 { background-image: linear-gradient(rgba(26,26,24,0.12), rgba(26,26,24,0.28)), url("assets/WhatsApp Image 2026-04-30 at 7.24.47 AM.jpeg"); }
+  .photo-502 { background-image: linear-gradient(rgba(26,26,24,0.12), rgba(26,26,24,0.28)), url("assets/WhatsApp Image 2026-04-30 at 7.24.47 AM (1).jpeg"); }
+  .photo-401 { background-image: linear-gradient(rgba(26,26,24,0.12), rgba(26,26,24,0.28)), url("assets/WhatsApp Image 2026-04-30 at 7.25.08 AM.jpeg"); }
+  .photo-402 { background-image: linear-gradient(rgba(26,26,24,0.12), rgba(26,26,24,0.28)), url("assets/WhatsApp Image 2026-04-30 at 7.25.08 AM (1).jpeg"); }
+  .photo-301 { background-image: linear-gradient(rgba(26,26,24,0.12), rgba(26,26,24,0.28)), url("assets/WhatsApp Image 2026-04-30 at 7.24.46 AM.jpeg"); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><span></span>22 Apartments</div>
+  <div class="nav-links">
+    <a href="#apartments">Apartments</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#plans">Floor Plans</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="nav-cta">Schedule Tour</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Premium Residences · IDH, Colombo</div>
+    <h1 class="hero-headline">LIVE<br>ABOVE<br><em>the rest</em></h1>
+    <p class="hero-sub">22 meticulously designed apartments in IDH, Colombo, offering an elevated lifestyle where modern architecture meets curated living.</p>
+    <div class="hero-actions">
+      <a href="#apartments" class="btn-primary">View Apartments</a>
+      <a href="#contact" class="btn-ghost">Schedule Tour</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">22</div>
+        <div class="stat-label">Premium Units</div>
+      </div>
+      <div>
+        <div class="stat-num">8F</div>
+        <div class="stat-label">Floors High</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Layout Types</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card-main">
+      <div class="hero-building-img photo-hero"></div>
+      <div class="hero-card-info">
+        <div class="apt-badge">Available Now</div>
+        <div class="apt-name">Penthouse Suite 801</div>
+        <div class="apt-price">From LKR 185,000 / month</div>
+      </div>
+    </div>
+
+    <div class="floating-tags">
+      <div class="ftag">🏊 Pool & Spa</div>
+      <div class="ftag">🏋 Fitness Center</div>
+      <div class="ftag">🔒 24/7 Security</div>
+    </div>
+
+    <div class="floating-stat">
+      <div class="fs-num">22</div>
+      <div class="fs-label">Units Available</div>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<section class="search-section">
+  <div class="search-bar">
+    <div class="search-field">
+      <span class="sf-label">Unit Type</span>
+      <select class="sf-input" style="border:none;outline:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;">
+        <option>Any Type</option>
+        <option>1 Bedroom</option>
+        <option>2 Bedroom</option>
+        <option>3 Bedroom</option>
+        <option>Penthouse</option>
+      </select>
+    </div>
+    <div class="sf-divider"></div>
+    <div class="search-field">
+      <span class="sf-label">Budget (LKR/mo)</span>
+      <select class="sf-input" style="border:none;outline:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;">
+        <option>Any Budget</option>
+        <option>Under 80,000</option>
+        <option>80,000 – 130,000</option>
+        <option>130,000 – 180,000</option>
+        <option>Above 180,000</option>
+      </select>
+    </div>
+    <div class="sf-divider"></div>
+    <div class="search-field">
+      <span class="sf-label">Move-in Date</span>
+      <input type="text" class="sf-input" placeholder="Select date" style="font-weight:500;"/>
+    </div>
+    <button class="search-btn">🔍 Search Units</button>
+  </div>
+</section>
+
+<!-- APARTMENTS -->
+<section class="apts-section" id="apartments">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Our Collection</div>
+      <h2 class="section-title">22 CURATED<br><em>Residences</em></h2>
+    </div>
+    <div class="filter-tabs">
+      <button class="ftab active">All</button>
+      <button class="ftab">1 BED</button>
+      <button class="ftab">2 BED</button>
+      <button class="ftab">3 BED</button>
+      <button class="ftab">Penthouse</button>
+    </div>
+  </div>
+
+  <div class="apt-grid">
+
+    <!-- FEATURED -->
+    <div class="apt-card featured">
+      <div class="apt-img">
+        <div class="apt-img-bg photo-801"></div>
+        <div class="apt-img-overlay"></div>
+        <div class="apt-unit-badge">Unit 801</div>
+        <div class="apt-avail avail-yes">Available</div>
+      </div>
+      <div class="apt-body">
+        <div class="apt-floor">Floor 8 · Penthouse</div>
+        <div class="apt-title">Sky Penthouse Suite</div>
+        <p class="apt-desc">The crown jewel of 22 Apartments. Panoramic city views, private rooftop terrace, chef's kitchen, and bespoke finishes throughout for standout city living.</p>
+        <div class="apt-specs">
+          <div class="spec"><span class="spec-icon">🛏</span> 3 Beds</div>
+          <div class="spec"><span class="spec-icon">🚿</span> 3 Baths</div>
+          <div class="spec"><span class="spec-icon">📐</span> 2,400 sqft</div>
+        </div>
+        <div class="apt-footer">
+          <div>
+            <div class="apt-price-tag">LKR 185,000 <small>/mo</small></div>
+          </div>
+          <button class="apt-btn">Enquire Now →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- UNIT 701 -->
+    <div class="apt-card">
+      <div class="apt-img">
+        <div class="apt-img-bg photo-701"></div>
+        <div class="apt-img-overlay"></div>
+        <div class="apt-unit-badge">Unit 701</div>
+        <div class="apt-avail avail-yes">Available</div>
+      </div>
+      <div class="apt-body">
+        <div class="apt-floor">Floor 7</div>
+        <div class="apt-title">Forest View Suite</div>
+        <div class="apt-specs">
+          <div class="spec"><span class="spec-icon">🛏</span> 2 Beds</div>
+          <div class="spec"><span class="spec-icon">🚿</span> 2 Baths</div>
+          <div class="spec"><span class="spec-icon">📐</span> 1,450 sqft</div>
+        </div>
+        <div class="apt-footer">
+          <div class="apt-price-tag">LKR 130,000 <small>/mo</small></div>
+          <button class="apt-btn">→</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Unit 601 -->
+    <div class="apt-card">
+      <div class="apt-img">
+        <div class="apt-img-bg photo-601"></div>
+        <div class="apt-img-overlay"></div>
+        <div class="apt-unit-badge">Unit 601</div>
+        <div class="apt-avail avail-soon">From June</div>
+      </div>
+      <div class="apt-body">
+        <div class="apt-floor">Floor 6</div>
+        <div class="apt-title">Warm Terrace</div>
+        <div class="apt-specs">
+          <div class="spec"><span class="spec-icon">🛏</span> 2 Beds</div>
+          <div class="spec"><span class="spec-icon">🚿</span> 2 Baths</div>
+          <div class="spec"><span class="spec-icon">📐</span> 1,280 sqft</div>
+        </div>
+        <div class="apt-footer">
+          <div class="apt-price-tag">LKR 118,000 <small>/mo</small></div>
+          <button class="apt-btn">→</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Unit 501 -->
+    <div class="apt-card">
+      <div class="apt-img">
+        <div class="apt-img-bg photo-501"></div>
+        <div class="apt-img-overlay"></div>
+        <div class="apt-unit-badge">Unit 501</div>
+        <div class="apt-avail avail-yes">Available</div>
+      </div>
+      <div class="apt-body">
+        <div class="apt-floor">Floor 5</div>
+        <div class="apt-title">City View Studio</div>
+        <div class="apt-specs">
+          <div class="spec"><span class="spec-icon">🛏</span> 1 Bed</div>
+          <div class="spec"><span class="spec-icon">🚿</span> 1 Bath</div>
+          <div class="spec"><span class="spec-icon">📐</span> 680 sqft</div>
+        </div>
+        <div class="apt-footer">
+          <div class="apt-price-tag">LKR 72,000 <small>/mo</small></div>
+          <button class="apt-btn">→</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Unit 502 -->
+    <div class="apt-card">
+      <div class="apt-img">
+        <div class="apt-img-bg photo-502"></div>
+        <div class="apt-img-overlay"></div>
+        <div class="apt-unit-badge">Unit 502</div>
+        <div class="apt-avail avail-yes">Available</div>
+      </div>
+      <div class="apt-body">
+        <div class="apt-floor">Floor 5</div>
+        <div class="apt-title">Garden Alcove</div>
+        <div class="apt-specs">
+          <div class="spec"><span class="spec-icon">🛏</span> 1 Bed</div>
+          <div class="spec"><span class="spec-icon">🚿</span> 1 Bath</div>
+          <div class="spec"><span class="spec-icon">📐</span> 720 sqft</div>
+        </div>
+        <div class="apt-footer">
+          <div class="apt-price-tag">LKR 75,000 <small>/mo</small></div>
+          <button class="apt-btn">→</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Unit 401 -->
+    <div class="apt-card">
+      <div class="apt-img">
+        <div class="apt-img-bg photo-401"></div>
+        <div class="apt-img-overlay"></div>
+        <div class="apt-unit-badge">Unit 401</div>
+        <div class="apt-avail avail-soon">From July</div>
+      </div>
+      <div class="apt-body">
+        <div class="apt-floor">Floor 4</div>
+        <div class="apt-title">Sunset Corner</div>
+        <div class="apt-specs">
+          <div class="spec"><span class="spec-icon">🛏</span> 2 Beds</div>
+          <div class="spec"><span class="spec-icon">🚿</span> 2 Baths</div>
+          <div class="spec"><span class="spec-icon">📐</span> 1,100 sqft</div>
+        </div>
+        <div class="apt-footer">
+          <div class="apt-price-tag">LKR 105,000 <small>/mo</small></div>
+          <button class="apt-btn">→</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Unit 402 -->
+    <div class="apt-card">
+      <div class="apt-img">
+        <div class="apt-img-bg photo-402"></div>
+        <div class="apt-img-overlay"></div>
+        <div class="apt-unit-badge">Unit 402</div>
+        <div class="apt-avail avail-yes">Available</div>
+      </div>
+      <div class="apt-body">
+        <div class="apt-floor">Floor 4</div>
+        <div class="apt-title">Desert Palm</div>
+        <div class="apt-specs">
+          <div class="spec"><span class="spec-icon">🛏</span> 1 Bed</div>
+          <div class="spec"><span class="spec-icon">🚿</span> 1 Bath</div>
+          <div class="spec"><span class="spec-icon">📐</span> 750 sqft</div>
+        </div>
+        <div class="apt-footer">
+          <div class="apt-price-tag">LKR 78,000 <small>/mo</small></div>
+          <button class="apt-btn">→</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Units 301 & 302 side-by-side as regular cards -->
+    <div class="apt-card">
+      <div class="apt-img">
+        <div class="apt-img-bg photo-301"></div>
+        <div class="apt-img-overlay"></div>
+        <div class="apt-unit-badge">Unit 301</div>
+        <div class="apt-avail avail-yes">Available</div>
+      </div>
+      <div class="apt-body">
+        <div class="apt-floor">Floor 3</div>
+        <div class="apt-title">Slate Loft</div>
+        <div class="apt-specs">
+          <div class="spec"><span class="spec-icon">🛏</span> 2 Beds</div>
+          <div class="spec"><span class="spec-icon">🚿</span> 2 Baths</div>
+          <div class="spec"><span class="spec-icon">📐</span> 1,050 sqft</div>
+        </div>
+        <div class="apt-footer">
+          <div class="apt-price-tag">LKR 98,000 <small>/mo</small></div>
+          <button class="apt-btn">→</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Load more -->
+    <div style="grid-column:span 3;text-align:center;padding:20px 0;">
+      <button onclick="this.textContent='Contact us to view all 22 units →'" style="background:transparent;border:1.5px solid var(--border);padding:14px 36px;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--dark);cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--dark)'" onmouseout="this.style.borderColor='var(--border)'">View All 22 Apartments</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="amenities-section" id="amenities">
+  <div class="section-eyebrow">What's Included</div>
+  <h2 class="section-title">WORLD-CLASS<br><em>Amenities</em></h2>
+
+  <div class="amenities-grid">
+    <div class="amenity-card">
+      <div class="amenity-icon">🏊</div>
+      <div class="amenity-title">Infinity Pool</div>
+      <div class="amenity-desc">Rooftop pool with panoramic city views, heated year-round with private cabanas.</div>
+    </div>
+    <div class="amenity-card">
+      <div class="amenity-icon">🏋</div>
+      <div class="amenity-title">Fitness Centre</div>
+      <div class="amenity-desc">State-of-the-art equipment, personal training available, open 24/7 for residents.</div>
+    </div>
+    <div class="amenity-card">
+      <div class="amenity-icon">🛎</div>
+      <div class="amenity-title">Concierge</div>
+      <div class="amenity-desc">Dedicated concierge service for bookings, deliveries, and resident requests.</div>
+    </div>
+    <div class="amenity-card">
+      <div class="amenity-icon">🔒</div>
+      <div class="amenity-title">24/7 Security</div>
+      <div class="amenity-desc">CCTV surveillance, access control, and professional security personnel.</div>
+    </div>
+    <div class="amenity-card">
+      <div class="amenity-icon">🚗</div>
+      <div class="amenity-title">Covered Parking</div>
+      <div class="amenity-desc">Allocated parking bays with EV charging points available on request.</div>
+    </div>
+    <div class="amenity-card">
+      <div class="amenity-icon">🌿</div>
+      <div class="amenity-title">Sky Garden</div>
+      <div class="amenity-desc">Landscaped terrace garden for relaxation and private events.</div>
+    </div>
+    <div class="amenity-card">
+      <div class="amenity-icon">📶</div>
+      <div class="amenity-title">Fibre Internet</div>
+      <div class="amenity-desc">High-speed fibre included in rent. Symmetric 1Gbps throughout building.</div>
+    </div>
+    <div class="amenity-card">
+      <div class="amenity-icon">🧺</div>
+      <div class="amenity-title">Laundry Suite</div>
+      <div class="amenity-desc">Resident laundry lounge with commercial-grade machines on every floor.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOOR PLANS -->
+<section class="plans-section" id="plans">
+  <div class="section-eyebrow">Layouts</div>
+  <h2 class="section-title">FLOOR PLAN<br><em>Options</em></h2>
+
+  <div class="plans-grid">
+    <div class="plan-card">
+      <div class="plan-type">Studio / 1 Bed</div>
+      <div class="plan-name">Compact Living</div>
+      <div class="plan-sqft">620 – 800 sqft · 8 Units</div>
+      <ul class="plan-features">
+        <li>Bedrooms <span>1</span></li>
+        <li>Bathrooms <span>1</span></li>
+        <li>Balcony <span>✓</span></li>
+        <li>Floor Range <span>3rd – 5th</span></li>
+        <li>Parking <span>1 Bay</span></li>
+      </ul>
+      <div class="plan-price">LKR 70,000 <small>/mo</small></div>
+      <button class="plan-btn plan-btn-outline">View Units</button>
+    </div>
+
+    <div class="plan-card highlight">
+      <div class="plan-type">2 Bedroom</div>
+      <div class="plan-name">Family Suite</div>
+      <div class="plan-sqft">1,050 – 1,450 sqft · 10 Units</div>
+      <ul class="plan-features">
+        <li>Bedrooms <span>2</span></li>
+        <li>Bathrooms <span>2</span></li>
+        <li>Balcony <span>✓</span></li>
+        <li>Floor Range <span>3rd – 7th</span></li>
+        <li>Parking <span>1–2 Bays</span></li>
+      </ul>
+      <div class="plan-price">LKR 98,000 <small>/mo</small></div>
+      <button class="plan-btn plan-btn-solid">View Units</button>
+    </div>
+
+    <div class="plan-card">
+      <div class="plan-type">Penthouse</div>
+      <div class="plan-name">Sky Residence</div>
+      <div class="plan-sqft">2,000 – 2,400 sqft · 4 Units</div>
+      <ul class="plan-features">
+        <li>Bedrooms <span>3</span></li>
+        <li>Bathrooms <span>3</span></li>
+        <li>Private Terrace <span>✓</span></li>
+        <li>Floor Range <span>7th – 8th</span></li>
+        <li>Parking <span>2 Bays</span></li>
+      </ul>
+      <div class="plan-price">LKR 165,000 <small>/mo</small></div>
+      <button class="plan-btn plan-btn-outline">View Units</button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section class="cta-section" id="contact">
+  <div>
+    <div class="cta-tag">📅 Schedule a Viewing</div>
+    <h2 class="cta-title">FIND YOUR<br>PERFECT<br><em>Home</em></h2>
+    <p class="cta-text">Our team is ready to show you around and help you find the apartment that fits your lifestyle. Book a private tour at your convenience.</p>
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div style="display:flex;align-items:center;gap:12px;font-size:15px;color:var(--muted);">
+        <span style="width:40px;height:40px;background:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--cream);font-size:18px;">📞</span>
+        +94 11 234 5678
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;font-size:15px;color:var(--muted);">
+        <span style="width:40px;height:40px;background:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--cream);font-size:18px;">✉️</span>
+        hello@22apartments.lk
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;font-size:15px;color:var(--muted);">
+        <span style="width:40px;height:40px;background:var(--dark);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--cream);font-size:18px;">📍</span>
+        IDH, Colombo
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <div class="form-title">Request Information</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="Sadumina" />
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="Bagya" />
+      </div>
+    </div>
+    <div class="form-group" style="margin-bottom:16px;">
+      <label>Email Address</label>
+      <input type="email" placeholder="you@example.com" />
+    </div>
+    <div class="form-group" style="margin-bottom:16px;">
+      <label>Phone Number</label>
+      <input type="tel" placeholder="+94 77 000 0000" />
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Unit Type</label>
+        <select>
+          <option>Any Type</option>
+          <option>Studio / 1 Bed</option>
+          <option>2 Bedrooms</option>
+          <option>3 Bedrooms</option>
+          <option>Penthouse</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Move-in Month</label>
+        <select>
+          <option>May 2025</option>
+          <option>June 2025</option>
+          <option>July 2025</option>
+          <option>August 2025</option>
+          <option>Flexible</option>
+        </select>
+      </div>
+    </div>
+    <button class="form-submit" onclick="this.textContent='✓ Request Sent! We\'ll be in touch soon.'">Send Enquiry</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">22 Apartments</div>
+      <p class="footer-about">Premium apartment living in IDH, Colombo. 22 curated residences designed for those who expect more.</p>
+      <div style="display:flex;gap:12px;">
+        <a href="#" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;transition:all 0.2s;" onmouseover="this.style.borderColor='#C9A84C';this.style.color='#C9A84C'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.6)'">f</a>
+        <a href="#" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;transition:all 0.2s;" onmouseover="this.style.borderColor='#C9A84C';this.style.color='#C9A84C'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.6)'">in</a>
+        <a href="#" style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;transition:all 0.2s;" onmouseover="this.style.borderColor='#C9A84C';this.style.color='#C9A84C'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.6)'">ig</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Explore</div>
+      <ul class="footer-links">
+        <li><a href="#apartments">Our Apartments</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#plans">Floor Plans</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Unit Types</div>
+      <ul class="footer-links">
+        <li><a href="#">Studio Units</a></li>
+        <li><a href="#">1 Bedroom</a></li>
+        <li><a href="#">2 Bedroom</a></li>
+        <li><a href="#">Penthouse</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Legal</div>
+      <ul class="footer-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+        <li><a href="#">Accessibility</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 22 Apartments. All rights reserved.</span>
+    <span>Colombo, Sri Lanka 🇱🇰</span>
+  </div>
+</footer>
+
+<script>
+  // Filter tabs
+  document.querySelectorAll('.ftab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.ftab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.apt-card, .amenity-card, .plan-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
