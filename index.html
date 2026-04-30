@@ -578,6 +578,253 @@
   .photo-401 { background-image: linear-gradient(rgba(26,26,24,0.12), rgba(26,26,24,0.28)), url("assets/WhatsApp Image 2026-04-30 at 7.25.08 AM.jpeg"); }
   .photo-402 { background-image: linear-gradient(rgba(26,26,24,0.12), rgba(26,26,24,0.28)), url("assets/WhatsApp Image 2026-04-30 at 7.25.08 AM (1).jpeg"); }
   .photo-301 { background-image: linear-gradient(rgba(26,26,24,0.12), rgba(26,26,24,0.28)), url("assets/WhatsApp Image 2026-04-30 at 7.24.46 AM.jpeg"); }
+
+  @media (max-width: 1200px) {
+    nav,
+    .hero,
+    .search-section,
+    .apts-section,
+    .amenities-section,
+    .plans-section,
+    .cta-section,
+    footer {
+      padding-left: 36px;
+      padding-right: 36px;
+    }
+
+    .hero {
+      gap: 40px;
+    }
+
+    .apt-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .amenities-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .plans-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .plan-card.highlight {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 960px) {
+    nav {
+      padding-top: 16px;
+      padding-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .nav-links {
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px 22px;
+    }
+
+    .hero {
+      min-height: auto;
+      padding-top: 150px;
+      grid-template-columns: 1fr;
+    }
+
+    .hero-left {
+      order: 1;
+    }
+
+    .hero-visual {
+      order: 2;
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .hero-sub {
+      max-width: 100%;
+    }
+
+    .search-bar {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .sf-divider {
+      display: none;
+    }
+
+    .search-btn {
+      width: 100%;
+      justify-content: center;
+      grid-column: 1 / -1;
+    }
+
+    .section-header,
+    .cta-section,
+    .footer-top {
+      grid-template-columns: 1fr;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .apt-card.featured {
+      grid-column: span 2;
+      grid-template-columns: 1fr;
+    }
+
+    .plans-grid,
+    .cta-section {
+      grid-template-columns: 1fr;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-top {
+      display: grid;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    nav,
+    .hero,
+    .search-section,
+    .apts-section,
+    .amenities-section,
+    .plans-section,
+    .cta-section,
+    footer {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    nav {
+      justify-content: center;
+    }
+
+    .nav-logo {
+      font-size: 24px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+    }
+
+    .nav-cta {
+      padding: 9px 18px;
+    }
+
+    .hero {
+      padding-top: 164px;
+      padding-bottom: 56px;
+      gap: 28px;
+    }
+
+    .hero::before {
+      width: 320px;
+      height: 320px;
+      top: -60px;
+      right: -90px;
+    }
+
+    .hero-eyebrow {
+      letter-spacing: 2px;
+      gap: 10px;
+    }
+
+    .hero-headline {
+      font-size: clamp(52px, 18vw, 84px);
+      margin-bottom: 20px;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions,
+    .hero-stats {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .hero-card-info,
+    .contact-form {
+      padding: 22px;
+    }
+
+    .floating-tags {
+      position: static;
+      margin-top: 16px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .floating-stat {
+      position: static;
+      margin-top: 16px;
+      display: inline-block;
+    }
+
+    .search-section,
+    .apts-section,
+    .amenities-section,
+    .plans-section,
+    .cta-section {
+      padding-top: 56px;
+      padding-bottom: 56px;
+    }
+
+    .search-bar,
+    .apt-grid,
+    .amenities-grid,
+    .plans-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .search-bar {
+      padding: 18px;
+    }
+
+    .apt-card.featured,
+    .plan-card.highlight {
+      grid-column: auto;
+    }
+
+    .filter-tabs {
+      flex-wrap: wrap;
+    }
+
+    .amenity-card,
+    .plan-card {
+      padding: 22px;
+    }
+
+    .cta-title,
+    .section-title {
+      line-height: 1;
+    }
+  }
 </style>
 </head>
 <body>
